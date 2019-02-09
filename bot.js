@@ -1062,6 +1062,6 @@ if (message.content.toLowerCase().startsWith(prefixs + `close`)) {
 });
 ///////////////////////////////
 
-client.login(process.env.BOT_TOKEN);
+client.login("NTQxNzg5NTI0NjExNjk0NjAy.D0DFNw.6Y2ZaD31RyOflTVJ5YRIypKvxco");
 
 
