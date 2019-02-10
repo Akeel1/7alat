@@ -1,10 +1,8 @@
 
-const Discord = require("discord.js");
-const fs = require("fs");
-const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./warnings.json"));;
+const Discord = require('discord.js');
 const client = new Discord.Client();
- 
+const prefix = "$"
+
  
 client.on('message', async message => {
  
