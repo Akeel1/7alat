@@ -1,92 +1,38 @@
-
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const prefix = "$"
-
- 
-client.on('message', async message => {
- 
-  if (message.author.x5bz) return;
-  if (!message.content.startsWith(prefix)) return;
- 
- 
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
- 
-  let args = message.content.split(" ").slice(1);
- 
-  if (command == "warn") { //??? ???????
- 
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
- 
-  if (message.mentions.users.size < 1) return message.reply("**???? ???**");
-  if(!reason) return message.reply ("**???? ??? ?????**");
- 
- 
-  if(!warns[user.id]) warns[user.id] = {
-    warns: 0
-  };
- 
-  warns[user.id].warns++;
- 
-  fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-    if (err) console.log(err)
-  });
- 
- 
-  const banembed = new Discord.RichEmbed()
-  .setAuthor(`WARNED!`, user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-   client.channels.find('name', 'log').send({
-    embed : banembed
-  })
- 
-    if(warns[user.id].warns == 2){ //??? ???????? ??????
-    let muterole = message.guild.roles.find(`name`, "Muted");
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "Muted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
+client.on("message", msg => { //Narox Dev
+    if(msg.author.bot) return;
+    if(msg.channel.type === 'dm') return;
+  let prefix = '!'; //البرفكس
+  let msgarray = msg.content.split(" ");
+  let cmd = msgarray[0];
+  let args = msgarray.slice(1);
+  if(cmd === `${prefix}warn`){//الامر
+    
+    
+  
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+  if(!rUser) return msg.channel.send("Couldn't find users.");
+      let reason = args.join(" ").slice(22);
+  
+      let reportembed = new Discord.RichEmbed()
+      .setDescription("Warn")
+      .setColor("BLACK")
+      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
+      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
+      .addField("Channel", msg.channel)
+      .addField("Time", msg.createdAt)
+      .addField("Reason",`${reason}`)
+      
+      
+      let reportchannel = msg.guild.channels.find(`name`,"warn-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+      if(!reportchannel) return msg.channel.send("Couldn't find `warn-log` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+      
+      msg.delete().catch(O_o=>{});
+      reportchannel.send(reportembed);
+      let role = msg.guild.roles.find(`name`, 'Warn'); 
+      if(!role) return msg.guild.channel.send("Could't find `Warn` role."); 
+      rUser.addRole(role);
+      
+          return;
       }
-    }
-   
-    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!tomute) return message.reply("**??? ???? ?????? ?????**:x: ") .then(m => m.delete(5000));
-   
-    let mutetime = "60s";
-    await(tomute.addRole(muterole.id));
-    message.channel.send(`<@${user.id}> has been temporarily muted`);
- 
-    setTimeout(async function(){
-    await(tomute.removeRole(muterole.id));
-      message.reply(`<@${user.id}> has been unmuted.`)
-    }, ms(mutetime))
-  }
-  if(warns[user.id].warns == 3){  //??? ???????? ??????
-    message.guild.member(user).ban(reason);
-    message.reply(`<@${user.id}> has been banned.`)
-  }
- 
-}
-}
-);
-      client.login("NTQ0MTE2OTM2Njk5NTQzNTUy.D0Gb-w.QlnDXfbkTlyeaqPK3g5WgTP9f_c");
+      });
+      client.login(process.env.BOT_TOKEN);
