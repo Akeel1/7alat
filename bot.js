@@ -35,4 +35,4 @@ client.on("message", msg => { //Narox Dev
           return;
       }
       });
-      client.login(process.env.BOT_TOKEN);
+      client.login("NTQ0MTE2OTM2Njk5NTQzNTUy.D0Gb-w.QlnDXfbkTlyeaqPK3g5WgTP9f_c");
