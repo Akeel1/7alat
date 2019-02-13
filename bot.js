@@ -1,39 +1,88 @@
-client.on("message", msg => { //Narox Dev
-    if(msg.author.bot) return;
-    if(msg.channel.type === 'dm') return;
-  let prefix = '!'; //البرفكس
-  let msgarray = msg.content.split(" ");
-  let cmd = msgarray[0];
-  let args = msgarray.slice(1);
-  if(cmd === `${prefix}warn`){//الامر
-    
-    
-  
-    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
-  if(!rUser) return msg.channel.send("Couldn't find users.");
-      let reason = args.join(" ").slice(22);
-  
-      let reportembed = new Discord.RichEmbed()
-      .setDescription("Warn")
-      .setColor("BLACK")
-      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
-      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
-      .addField("Channel", msg.channel)
-      .addField("Time", msg.createdAt)
-      .addField("Reason",`${reason}`)
-      
-      
-      let reportchannel = msg.guild.channels.find(`name`,"warn-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-      if(!reportchannel) return msg.channel.send("Couldn't find `warn-log` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
-      
-      msg.delete().catch(O_o=>{});
-      reportchannel.send(reportembed);
-      let role = msg.guild.roles.find(`name`, 'Warn'); 
-      if(!role) return msg.guild.channel.send("Could't find `Warn` role."); 
-      rUser.addRole(role);
-      
-          return;
-      }
-      });
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const client2 = new Discord.Client();
 
-      client.login("NTQ0MTE2OTM2Njk5NTQzNTUy.D0Gb-w.QlnDXfbkTlyeaqPK3g5WgTP9f_c");
+client.on('ready', () => {
+   console.log(`----------------`);
+   console.log(`Credit Farmm - Script By : Kahrbaa `);
+   console.log(`----------------`);
+   console.log(`Loadinng`);
+   console.log(`Loadinng.`);
+   console.log(`Loadinng..`);
+   console.log(`Loadinng...`);
+   console.log(`This Bots Online ' `);
+   console.log(`----------------`);
+});
+
+
+client.on('message', message => {
+    if(message.content === '-راتب'){
+        message.channel.send('#daily')
+    }
+});
+
+client.on('message', message => {
+    if(message.content === '-مبلغ'){
+        message.channel.send('#credits')
+    }
+});
+
+client.on('message', message => {
+    if(message.content === '-ريب'){
+        message.channel.send('#credits')
+    }
+});
+
+client2.on('message', message => {
+    if(message.content === '-راتب'){
+        message.channel.send('#daily')
+    }
+});
+
+client2.on('message', message => {
+    if(message.content === '-مبلغ'){
+        message.channel.send('#credits')
+    }
+});
+
+client2.on('message', message => {
+    if(message.content === '-ريب'){
+        message.channel.send('#credits')
+    }
+});
+
+
+
+client.on('message', message => { // لا تغير شئ عشان ما تخرب الدنيا
+if (message.content === '!spam') {
+      let count = 0;
+      let ecount = 0;
+      for(let x = 0; x < 90000; x++) {
+        message.channel.send(`**Credit Spam , Frame , Credit By Kahrba , Farm Credit By Kahrba, ez Farm - كردت اسبام اسبام اسبام اوف ءف اح اح نار ج **[ " ${x} " ]`)
+          .then(m => {
+            count++;
+          })
+          
+        }
+      }
+});
+
+client2.on('message', message => { // لا تغير شئ عشان ما تخرب الدنيا
+if (message.content === '!spam') {
+      let count = 0;
+      let ecount = 0;
+      for(let x = 0; x < 90000; x++) {
+        message.channel.send(`**Credit Spam , Frame , Credit By Kahrba , Farm Credit By Kahrba, ez Farm - كردت اسبام اسبام اسبام اوف ءف اح اح نار ج **[ " ${x} " ]`)
+          .then(m => {
+            count++;
+          })
+          
+        }
+      }
+});
+
+
+
+
+client.login(process.env.TOKEN);// لا تغير فيها شيء
+client2.login(process.env.TOKEN2);// لا تغير فيها شيء
