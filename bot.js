@@ -4,8 +4,8 @@ const iKhaled = ['494469169862148116'];
 
 
   console.log("BOT ONLINE");
-    client.on('message', Akeel=> {
-      var argresult = Akeel.content.split(` `).slice(1).join(' ');
+    client.on('message', Khaled => {
+      var argresult = Khaled.content.split(` `).slice(1).join(' ');
         if (!iKhaled.includes(Khaled.author.id)) return;
         
         if (Khaled.content.startsWith('W')) {
@@ -18,8 +18,8 @@ const iKhaled = ['494469169862148116'];
             setTimeout(function() {
             Khaled.delete();
           }, 60000)
-        } else //Akeel
-        if (Khaled.content.startsWith('L')) {//Akeel
+        } else //Khaled 
+        if (Khaled.content.startsWith('L')) {//Khaled
           if(!argresult) return;
             client.user.setActivity(argresult , {type:'LISTENING'});
               client.user.setStatus("dnd")
@@ -32,14 +32,14 @@ const iKhaled = ['494469169862148116'];
               if(!argresult) return;
               client.user.setGame(argresult, "https://www.twitch.tv/ikhaled321");
                 client.user.setStatus("dnd")
-                Khaled.channel.send(`**__Steaming__ تم تفعيل حالة**`)//Akeel
+                Khaled.channel.send(`**__Steaming__ تم تفعيل حالة**`)//Khaled
                 setTimeout(function() {
                   Khaled.delete();
                 }, 60000)
         } else 
-        if (Khaled.content.startsWith('P')) {
+        if (Khaled.content.startsWith('L')) {
           if(!argresult) return;
-          client.user.setActivity(argresult , {type:'PLAYING'});//Akeel
+          client.user.setActivity(argresult , {type:'PLAYING'});//Khaled
            client.user.setStatus("dnd")
            Khaled.channel.send(`**__Playing__ تم تفعيل حالة**`)
            setTimeout(function() {
