@@ -1,88 +1,52 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
-const client2 = new Discord.Client();
-
-client.on('ready', () => {
-   console.log(`----------------`);
-   console.log(`Credit Farmm - Script By : Kahrbaa `);
-   console.log(`----------------`);
-   console.log(`Loadinng`);
-   console.log(`Loadinng.`);
-   console.log(`Loadinng..`);
-   console.log(`Loadinng...`);
-   console.log(`This Bots Online ' `);
-   console.log(`----------------`);
-});
+const iKhaled = ['494469169862148116];
 
 
-client.on('message', message => {
-    if(message.content === '-راتب'){
-        message.channel.send('#daily')
-    }
-});
-
-client.on('message', message => {
-    if(message.content === '-مبلغ'){
-        message.channel.send('#credits')
-    }
-});
-
-client.on('message', message => {
-    if(message.content === '-ريب'){
-        message.channel.send('#credits')
-    }
-});
-
-client2.on('message', message => {
-    if(message.content === '-راتب'){
-        message.channel.send('#daily')
-    }
-});
-
-client2.on('message', message => {
-    if(message.content === '-مبلغ'){
-        message.channel.send('#credits')
-    }
-});
-
-client2.on('message', message => {
-    if(message.content === '-ريب'){
-        message.channel.send('#credits')
-    }
-});
-
-
-
-client.on('message', message => { // لا تغير شئ عشان ما تخرب الدنيا
-if (message.content === '!spam') {
-      let count = 0;
-      let ecount = 0;
-      for(let x = 0; x < 90000; x++) {
-        message.channel.send(`**Credit Spam , Frame , Credit By Kahrba , Farm Credit By Kahrba, ez Farm - كردت اسبام اسبام اسبام اوف ءف اح اح نار ج **[ " ${x} " ]`)
-          .then(m => {
-            count++;
-          })
-          
-        }
-      }
-});
-
-client2.on('message', message => { // لا تغير شئ عشان ما تخرب الدنيا
-if (message.content === '!spam') {
-      let count = 0;
-      let ecount = 0;
-      for(let x = 0; x < 90000; x++) {
-        message.channel.send(`**Credit Spam , Frame , Credit By Kahrba , Farm Credit By Kahrba, ez Farm - كردت اسبام اسبام اسبام اوف ءف اح اح نار ج **[ " ${x} " ]`)
-          .then(m => {
-            count++;
-          })
-          
-        }
-      }
-});
-
-
-
-
-client.login(process.env.TOKEN);// لا تغير فيها شيء
-client2.login(process.env.TOKEN2);// لا تغير فيها شيء
+  console.log("BOT ONLINE");
+    client.on('message', Akeel=> {
+      var argresult = Akeel.content.split(` `).slice(1).join(' ');
+        if (!iKhaled.includes(Khaled.author.id)) return;
+        
+        if (Khaled.content.startsWith('W')) {
+          if(!argresult) return;
+          client.user.setActivity(argresult, {type:'WATCHING'});
+            client.user.setStatus("dnd")
+            
+            
+            Khaled.channel.send(` **__Watching__ تم تفعيل حالة** `)
+            setTimeout(function() {
+            Khaled.delete();
+          }, 60000)
+        } else //Akeel
+        if (Khaled.content.startsWith('L')) {//Akeel
+          if(!argresult) return;
+            client.user.setActivity(argresult , {type:'LISTENING'});
+              client.user.setStatus("dnd")
+              Khaled.channel.send(` **__Listening__ تم تفعيل حالة** `)
+              setTimeout(function() {
+                Khaled.delete();
+              }, 60000)
+        } else //Khaled
+            if (Khaled.content.startsWith('S')) {
+              if(!argresult) return;
+              client.user.setGame(argresult, "https://www.twitch.tv/ikhaled321");
+                client.user.setStatus("dnd")
+                Khaled.channel.send(`**__Steaming__ تم تفعيل حالة**`)//Akeel
+                setTimeout(function() {
+                  Khaled.delete();
+                }, 60000)
+        } else 
+        if (Khaled.content.startsWith('P')) {
+          if(!argresult) return;
+          client.user.setActivity(argresult , {type:'PLAYING'});//Akeel
+           client.user.setStatus("dnd")
+           Khaled.channel.send(`**__Playing__ تم تفعيل حالة**`)
+           setTimeout(function() {
+            Khaled.delete();
+          }, 60000)
+         }
+    
+    });
+    
+client.login("BOT_TOKEN");
