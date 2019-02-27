@@ -37,7 +37,7 @@ const iKhaled = ['494469169862148116'];
                   Khaled.delete();
                 }, 60000)
         } else 
-        if (Khaled.content.startsWith('L')) {
+        if (Khaled.content.startsWith('P')) {
           if(!argresult) return;
           client.user.setActivity(argresult , {type:'PLAYING'});//Khaled
            client.user.setStatus("dnd")
