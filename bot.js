@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const iKhaled = ['494469169862148116'];
-const iKhaled2 = ['545645820054208513'];
 
   console.log("BOT ONLINE");
     client.on('message', Khaled => {
@@ -50,4 +49,3 @@ const iKhaled2 = ['545645820054208513'];
     });
     
 client.login(process.env.BOT_TOKEN)
-client.login(process.env.BOT_TOKEN2)
